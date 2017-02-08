@@ -19,10 +19,20 @@ public class HiloPeticion extends Thread {
             byte[] mensaje = new byte[250];
             io.read(mensaje);
             String operation = new String(mensaje);
-            System.out.println("Mensaje recibido " + new String(mensaje));
+            System.out.println("Mensaje recibido " + operation);
+            int res = 0;
+            char operator = ' ';
+            String[] numbers = new String[2];
+            numbers = operation.split("[+,-,*,/]");
+            int x = Integer.valueOf(numbers[0]);
+            int y = Integer.valueOf(numbers[1]);
+            switch (operator){
+                case '+':
+                    break;
+            }
 
 
-
+            System.out.println(res);
             System.out.println("Cerrando el socket");
             socket.close();
             System.out.println("Cerrando el socket del servidor");

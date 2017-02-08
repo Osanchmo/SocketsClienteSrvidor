@@ -20,23 +20,14 @@ public class SocketServidor {
 
 
             System.out.println("Aceptando conexiones");
+            while(true) {
+                Socket socket = serverSocket.accept();
+                HiloPeticion hp = new HiloPeticion(socket);
+                hp.start();
+                System.out.println("Conexion recibida");
+            }
 
-            Socket socket = serverSocket.accept();
-
-            System.out.println("Conexion recibida");
-
-            InputStream io = socket.getInputStream();
-            OutputStream os = socket.getOutputStream();
-
-            byte[] mensaje = new byte[250];
-            io.read(mensaje);
-
-            System.out.println("Mensaje recibido " + new String(mensaje));
-
-            System.out.println("Cerrando el socket");
-
-            System.out.println("Cerrando el socket del servidor");
-
+           // serverSocket.close();
 
         }catch (Exception e){
             e.printStackTrace();

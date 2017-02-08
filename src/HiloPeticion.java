@@ -1,6 +1,7 @@
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class HiloPeticion extends Thread {
 
@@ -17,10 +18,12 @@ public class HiloPeticion extends Thread {
             InputStream io = socket.getInputStream();
             byte[] mensaje = new byte[250];
             io.read(mensaje);
-
+            String operation = new String(mensaje);
             System.out.println("Mensaje recibido " + new String(mensaje));
-            System.out.println("Cerrando el socket");
 
+
+
+            System.out.println("Cerrando el socket");
             socket.close();
             System.out.println("Cerrando el socket del servidor");
         } catch (Exception e) {

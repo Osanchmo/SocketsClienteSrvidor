@@ -15,7 +15,7 @@ public class SocketCliente {
             //socket udp
             //DatagramSocket udp = new DatagramSocket();
             System.out.println("Estableciendo conexión");
-            InetSocketAddress addr = new InetSocketAddress("0.0.0.0", 5555);
+            InetSocketAddress addr = new InetSocketAddress("localhost", 5555);
             cliente.connect(addr);
 
             InputStream is = cliente.getInputStream();
@@ -23,7 +23,7 @@ public class SocketCliente {
 
             System.out.println("Enviando mensaje...");
 
-            String mensaje = "Mi primer mensaje a través de un servicio";
+            String mensaje = "1+1;";
             os.write(mensaje.getBytes());
 
             System.out.println("Mensaje enviado");

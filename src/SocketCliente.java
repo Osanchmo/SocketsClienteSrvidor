@@ -23,7 +23,7 @@ public class SocketCliente {
 
             System.out.println("Enviando mensaje...");
 
-            String mensaje = "1+1;";
+            String mensaje = "1+1";
             os.write(mensaje.getBytes());
 
             System.out.println("Mensaje enviado");

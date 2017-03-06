@@ -22,7 +22,7 @@ public class HiloPeticion extends Thread {
             System.out.println("Mensaje recibido " + operation);
             int res = 0;
             char operator = ' ';
-            String[] numbers = new String[2];
+            String[] numbers;
             numbers = operation.split("[+,-,*,/]");
             int x = Integer.valueOf(numbers[0]);
             int y = Integer.valueOf(numbers[1]);

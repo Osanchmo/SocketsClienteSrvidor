@@ -32,7 +32,7 @@ public class HiloPeticion extends Thread {
             os.write(String.valueOf(exp.eval()).getBytes());
 
         } catch (Exception e) {
-            System.out.println("meh");
+            e.printStackTrace();
         }
 
     }

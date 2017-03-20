@@ -1,7 +1,11 @@
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import java.net.Socket;
 import java.util.ArrayList;
+
 
 public class HiloPeticion extends Thread {
 
@@ -14,30 +18,21 @@ public class HiloPeticion extends Thread {
     @Override
     public void run() {
         try {
-
             InputStream io = socket.getInputStream();
+            OutputStream os = socket.getOutputStream();
             byte[] mensaje = new byte[250];
             io.read(mensaje);
-            String operation = new String(mensaje);
-            System.out.println("Mensaje recibido " + operation);
-            int res = 0;
-            char operator = ' ';
-            String[] numbers;
-            numbers = operation.split("[+,-,*,/]");
-            int x = Integer.valueOf(numbers[0]);
-            int y = Integer.valueOf(numbers[1]);
-            switch (operator){
-                case '+':
-                    break;
-            }
+            String ques = new String(mensaje);
 
+            //Class expression by https://github.com/uklimaschewski/EvalEx
+            Expression exp = new Expression(ques);
 
-            System.out.println(res);
-            System.out.println("Cerrando el socket");
-            socket.close();
-            System.out.println("Cerrando el socket del servidor");
+            System.out.println(exp.eval());
+
+            os.write(String.valueOf(exp.eval()).getBytes());
+
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("meh");
         }
 
     }

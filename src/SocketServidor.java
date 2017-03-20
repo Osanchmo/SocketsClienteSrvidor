@@ -10,24 +10,22 @@ public class SocketServidor {
 
         try {
             System.out.println("Creando servidor");
-
             ServerSocket serverSocket = new ServerSocket();
-
             System.out.println("Realizando el bind (vinculo)");
-
                 InetSocketAddress addr = new InetSocketAddress("0.0.0.0", 5555);
                 serverSocket.bind(addr);
 
-
             System.out.println("Aceptando conexiones");
-            while(true) {
+            Boolean temp = true;
+
+            while(temp) {
                 Socket socket = serverSocket.accept();
                 HiloPeticion hp = new HiloPeticion(socket);
                 hp.start();
                 System.out.println("Conexion recibida");
             }
 
-           // serverSocket.close();
+           serverSocket.close();
 
         }catch (Exception e){
             e.printStackTrace();
